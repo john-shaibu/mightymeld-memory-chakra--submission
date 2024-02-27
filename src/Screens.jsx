@@ -143,7 +143,7 @@ export function PlayScreen({ end }) {
         <Container
           display="flex"
           flexDirection="column"
-          gap="10px"
+          gap="3em"
           padding="0"
           maxW="400px"
           height="fit-content"
@@ -154,20 +154,20 @@ export function PlayScreen({ end }) {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            gap="2"
+            gap="3"
           >
-            <Text color="green.600" fontSize="14px">
-              Tries:
+            <Text color="green.600" fontSize="18px">
+              Tries
             </Text>
             <Text
-              bg="green.100"
+              bg="green.200"
               py="2px"
               color="green.600"
               rounded="4px"
               lineHeight="16px"
-              pb="0"
+              // pb="0"
               px="8px"
-              fontSize="12px"
+              fontSize="16px"
               fontWeight="600"
             >
               {tryCount}
