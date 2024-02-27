@@ -1,7 +1,8 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import * as icons from "react-icons/gi";
-import { Box, Button } from "@chakra-ui/react";
+import { Button, Grid, Container, Heading, Text, Box } from "@chakra-ui/react";
+
 import { Tile } from "./Tile";
 
 export const possibleTileContents = [
@@ -19,9 +20,41 @@ export const possibleTileContents = [
 
 export function StartScreen({ start }) {
   return (
-    <Box>
-      <Button onClick={start}>Play</Button>
-    </Box>
+    <>
+      <Grid h="100vh" placeItems="center" minH="100vh">
+        <Container
+          maxW="400px"
+          minH="400px"
+          bg="teal.50"
+          p="76px 2.5rem"
+          rounded="16px"
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          gap="2.5rem"
+        >
+          <Heading color="teal.500" fontSize="42px">
+            Memory
+          </Heading>
+          <Text color="teal.500" fontSize="18px">
+            Flip over tiles looking for pairs
+          </Text>
+          <Button
+            variant="none"
+            rounded="full"
+            fontSize="23px"
+            px="32px"
+            py="25px"
+            color="white"
+            bgGradient="linear(to-b, teal.400, teal.600)"
+            minW="150px"
+            onClick={start}
+          >
+            Play
+          </Button>
+        </Container>
+      </Grid>
+    </>
   );
 }
 
@@ -106,12 +139,59 @@ export function PlayScreen({ end }) {
 
   return (
     <>
-      <Box>
-        {getTiles(6).map((tile, i) => (
-          <Tile key={i} flip={() => flip(i)} {...tile} />
-        ))}
-      </Box>
-      {tryCount}
+      <Grid alignItems="center" justifyItems="center" minH="100vh">
+        <Container
+          display="flex"
+          flexDirection="column"
+          gap="10px"
+          padding="0"
+          maxW="400px"
+          height="fit-content"
+        >
+          <Box
+            w="100%"
+            textAlign="center"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="2"
+          >
+            <Text color="green.600" fontSize="14px">
+              Tries:
+            </Text>
+            <Text
+              bg="green.100"
+              py="2px"
+              color="green.600"
+              rounded="4px"
+              lineHeight="16px"
+              pb="0"
+              px="8px"
+              fontSize="12px"
+              fontWeight="600"
+            >
+              {tryCount}
+            </Text>
+          </Box>
+          <Grid
+            templateRows="repeat(4, 1fr)"
+            templateColumns="repeat(4, 1fr)"
+            gap={'1rem'}
+            justifyContent="center"
+            justifyItems="center"
+            p="2.5"
+            bg="green.50"
+            rounded="16px"
+            h={'100%'}
+            minH={'400px'}
+            w={'400px'}   
+          >
+            {getTiles(16).map((tile, i) => (
+              <Tile key={i} flip={() => flip(i)} {...tile} />
+            ))}
+          </Grid>
+        </Container>
+      </Grid>
     </>
   );
 }

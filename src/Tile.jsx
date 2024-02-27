@@ -6,23 +6,28 @@ export function Tile({ content: Content, flip, state }) {
       return (
         <Box
           onClick={flip}
-          display="inline-block"
-          width={8}
-          height={8}
+          display="inline-grid"
+          width={'100%'}
+          height={'100%'}
           textAlign="center"
-          bg="gray.500"
-        >
-          ?
-        </Box>
+          alignSelf={"stretch"}
+          bg="green.300"
+          rounded="8px"
+          justifyContent="center"
+          justifyItems="center"
+        ></Box>
       );
     case "flipped":
       return (
         <Box
-          display="inline-block"
-          width={8}
-          height={8}
+           width={'100%'}
+          height={'100%'}
           textAlign="center"
-          bg="yellow.500"
+          color="white"
+          bg="green.600"
+          rounded="8px"
+          padding="8px"
+          h={"100%"}
         >
           <Content
             style={{
@@ -38,10 +43,11 @@ export function Tile({ content: Content, flip, state }) {
       return (
         <Box
           display="inline-block"
-          width={8}
-          height={8}
+          width={'100%'}
+          height={'100%'}
           textAlign="center"
-          color="gray.300"
+          color={"green.100"}
+          p={"4px"}
         >
           <Content
             style={{
